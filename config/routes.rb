@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :reactions
+  resources :comments
+  resources :user_projects
+  resources :projects
   namespace :api do
     namespace :v1 do
 

@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  has_secure_password
+  has_many :user_projects
+  has_many :projects, through: :user_projects
+  has_many :comments
+  has_many :reactions
 
+  has_secure_password
+  
   validates :email, presence: true
   validates :email, uniqueness: true
   validates :password, length: { in: 8..20 }
