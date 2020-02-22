@@ -5,7 +5,7 @@ class Api::V1::SessionsController < ApplicationController
     user = User.find_by(email: params[:user][:email])
     if user && user.authenticate(params[:user][:password])
       log_in(user)
-      cookies['logged_in'] = true
+      # cookies['logged_in'] = true
       render json: user, status: 200
     else
       render json: { error: 'Invalid Authentication' }, status: 401
@@ -13,7 +13,7 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   def auth_check
-    cookies['logged_in'] = logged_in?
+    # cookies['logged_in'] = logged_in?
     render json: { csrf_auth_token: form_authenticity_token }
   end
 
@@ -26,7 +26,7 @@ class Api::V1::SessionsController < ApplicationController
   def googleAuth
     # Get access tokens from the google server
     access_token = request.env['omniauth.auth']
-    binding.pry
+    # binding.pry
     user = User.from_omniauth(access_token)
     binding.pry
 
@@ -40,7 +40,8 @@ class Api::V1::SessionsController < ApplicationController
       log_in(user)
       redirect_to 'http://localhost:3000'
     else
-      redirect_to 'http://localhost:3000'
+      # redirect_to 'http://localhost:3000'
+      render json: { message: "Login incorrect, try again" }
       # redirect_to login_path
     end
   end

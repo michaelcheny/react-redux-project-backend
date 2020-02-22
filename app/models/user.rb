@@ -8,15 +8,16 @@ class User < ApplicationRecord
 
   has_secure_password
   
-  validates :email, presence: true
-  validates :email, uniqueness: true
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: true
   validates :password, length: { in: 8..20 }
 
   def self.from_omniauth(auth)
     # Creates a new user only if it doesn't exist
-    binding.pry
+    # binding.pry
     where(email: auth.info.email).first_or_initialize do |user|
       user.email = auth.info.email
+      user.name = auth.info.name
       random_password = RandomPasswordGenerator.generate(20)
       user.password = random_password
       user.password_confirmation = random_password
