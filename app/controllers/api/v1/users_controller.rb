@@ -2,14 +2,16 @@
 
 class Api::V1::UsersController < ApplicationController
 
+  before_action :find_user, only: [:show, :update]
+
   def index
     users = User.all
-    render json: users
+    render json: users, except: [:password_digest]
   end
 
   def show
-    user = User.find(params[:id])
-    render json: user
+    # user = User.find(params[:id])
+    render json: user, except: [:password_digest]
   end
 
   def new
@@ -22,8 +24,7 @@ class Api::V1::UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       log_in(user)
-      # session[:user_id] = user.id
-      cookies['logged_in'] = true
+      # cookies['logged_in'] = true
       render json: user, except: [:password_digest], status: 200
     else
       render json: { errors: user.errors.full_messages }, status: 400
@@ -31,9 +32,9 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
+    # user = User.find(params[:id])
     if user.update(user_params)
-      render json: user
+      render json: user, except: [:password_digest]
     else
       render json: user.errors, status: 401
     end
@@ -41,6 +42,10 @@ class Api::V1::UsersController < ApplicationController
   
   private
 
+  def find_user
+    user = User.find(params[:id])
+  end
+  
   def user_params
     params.require(:user).permit(:email, :password)
   end
