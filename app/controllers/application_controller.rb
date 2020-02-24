@@ -19,6 +19,18 @@ class ApplicationController < ActionController::API
     !!current_user
   end
 
+  def authorize_resource(resource)
+    raise ActiveRecord::RecordInvalid if !current_user || resource.user != current_user
+  end
+
+  def authenticate
+    raise AppError::AuthenticationError if !logged_in?
+  end
+
+  def not_authorized
+    render json: {error: "Not Authorized"}, status: 401
+  end
+
   private
 
   def set_csrf_cookie
