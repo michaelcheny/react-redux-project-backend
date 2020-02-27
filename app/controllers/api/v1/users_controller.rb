@@ -6,12 +6,12 @@ class Api::V1::UsersController < ApplicationController
 
   def index
     users = User.all
-    render json: users, except: [:password_digest]
+    render json: users, include: [:projects => {include: :users}], except: [:password_digest]
   end
 
   def show
-    # user = User.find(params[:id])
-    render json: user, except: [:password_digest]
+    user = User.find(params[:id])
+    render json: user, include: [:projects => {include: :users}], only: [:id, :name, :email]
   end
 
   def new
