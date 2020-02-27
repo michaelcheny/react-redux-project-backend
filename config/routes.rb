@@ -4,16 +4,18 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       
-      post '/signup' => 'users#create'
       get '/auth-check' => 'sessions#auth_check'
-      # get 'auth/:provider/callback' => 'sessions#googleAuth'
-      # get 'auth/failure' => redirect('/')
-      # Routes for Google authentication
-      get '/auth/:provider/callback', to: 'api/v1/sessions#googleAuth'
-      get '/auth/failure', to: redirect('/')
-      # get '/signup' => 'accounts#new', as: 'signup'
+      get '/signup' => 'users#new', as: 'signup'
+      post '/signup' => 'users#create'
+      get '/login' => 'sessions#login'
+      post '/login' => 'sessions#login'
+      post '/logout' => 'sessions#logout'
 
-      resources :users
+      # Routes for Google authentication
+      get '/auth/:provider/callback', to: 'sessions#googleAuth'
+      get '/auth/failure', to: redirect('/')
+
+      # resources :users
       resources :reactions
       resources :comments
       resources :user_projects
