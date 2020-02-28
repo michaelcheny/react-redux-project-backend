@@ -10,12 +10,11 @@ Rails.application.routes.draw do
       get '/login' => 'sessions#login'
       post '/login' => 'sessions#login'
       post '/logout' => 'sessions#logout'
-
       # Routes for Google authentication
       get '/auth/:provider/callback', to: 'sessions#googleAuth'
       get '/auth/failure', to: redirect('/')
 
-      # resources :users
+      resources :users
       resources :reactions
       resources :comments
       resources :user_projects
