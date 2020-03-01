@@ -24,7 +24,10 @@ class Api::V1::ProjectsController < ApplicationController
     render json: project
   end
 
-  sdfaksfasjfajkslhfsdjkcontinue here
+  def personal
+    user = current_user
+    render json: user, include: [:projects => {include: :users}], only: [:id, :name, :email]
+  end
   
   private
 

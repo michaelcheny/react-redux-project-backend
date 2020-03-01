@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get '/auth/:provider/callback', to: 'sessions#googleAuth'
       get '/auth/failure', to: redirect('/')
 
+      get '/personal-projects' => 'projects#personal'
       resources :users
       resources :reactions
       resources :comments
