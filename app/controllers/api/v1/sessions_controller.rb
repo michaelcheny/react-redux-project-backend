@@ -2,10 +2,12 @@
 
 class Api::V1::SessionsController < ApplicationController
   def login
-    user = User.find_by(email: params[:user][:email])
-    if user && user.authenticate(params[:user][:password])
+    # binding.pry
+    user = User.find_by(email: params[:email])
+    if user && user.authenticate(params[:password])
       log_in(user)
       cookies['logged_in'] = true
+      # binding.pry
       render json: user, status: 200
     else
       render json: { error: 'Invalid Authentication' }, status: 401
