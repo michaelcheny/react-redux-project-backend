@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       post '/signup' => 'users#create'
       get '/login' => 'sessions#login'
       post '/login' => 'sessions#login'
-      post '/logout' => 'sessions#logout'
+      delete '/logout' => 'sessions#logout'
       # Routes for Google authentication
       get '/auth/:provider/callback', to: 'sessions#googleAuth'
       get '/auth/failure', to: redirect('/')

@@ -20,8 +20,9 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   def logout
-    authenticate
+    # authenticate
     session.clear
+    # binding.pry
     render json: { message: "Logged out" }, status: 200
   end
 

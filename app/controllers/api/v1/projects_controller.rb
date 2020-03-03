@@ -15,7 +15,7 @@ class Api::V1::ProjectsController < ApplicationController
     if project.save
       render json: project, include: [:users], status: 200
     else
-      render json: { messae: "There was an error creating this project" }, status: 400
+      render json: { message: "There was an error creating this project" }, status: 400
     end
   end
 

@@ -24,7 +24,7 @@ class Api::V1::UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       log_in(user)
-      # cookies['logged_in'] = true
+      cookies['logged_in'] = true
       render json: user, except: [:password_digest], status: 200
     else
       render json: { errors: user.errors.full_messages }, status: 400
