@@ -22,6 +22,8 @@ class Api::V1::SessionsController < ApplicationController
   def logout
     # authenticate
     session.clear
+    cookies['logged_in'] = logged_in?
+
     # binding.pry
     render json: { message: "Logged out" }, status: 200
   end
