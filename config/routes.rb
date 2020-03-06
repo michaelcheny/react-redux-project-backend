@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :categories
   namespace :api do
     namespace :v1 do
       
@@ -14,10 +13,11 @@ Rails.application.routes.draw do
       # Routes for Google authentication
       get '/auth/:provider/callback', to: 'sessions#googleAuth'
       get '/auth/failure', to: redirect('/')
-
+      
       get '/personal-projects' => 'projects#personal'
       resources :users
       resources :reactions
+      resources :categories
       resources :comments
       resources :user_projects
       resources :projects
