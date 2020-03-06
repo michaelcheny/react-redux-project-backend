@@ -10,7 +10,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
-    user = User.find(params[:id])
+    # user = User.find(params[:id])
     render json: user, include: [:projects => {include: :users}], only: [:id, :name, :email]
   end
 
@@ -20,7 +20,7 @@ class Api::V1::UsersController < ApplicationController
   end
   
   def create
-    binding.pry
+    # binding.pry
     user = User.new(user_params)
     if user.save
       log_in(user)
