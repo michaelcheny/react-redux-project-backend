@@ -11,8 +11,15 @@ class Api::V1::ProjectsController < ApplicationController
 
   def create
     user = current_user
-    project = user.projects.build(project_params)
+    category = Category.find_or_create_by(name: params[:category])
+    # binding.pry
+    # project = Projects.new(project_params)
+    project = Project.new(project_params)
+    # binding.pry
+    category.projects << project
     if project.save
+      user.user_projects.create(project: project)
+      # binding.pry
       render json: project, include: [:users], status: 200
     else
       render json: { message: "There was an error creating this project" }, status: 400
