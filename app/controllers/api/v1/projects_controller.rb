@@ -6,7 +6,8 @@ class Api::V1::ProjectsController < ApplicationController
     else
       projects = Project.all
     end
-    render json: projects, include: [:users => {except: [:created_at, :updated_at]}], status: 200
+    # render json: projects, include: [:users => {except: [:created_at, :updated_at]}, :category], status: 200
+    render json: projects, include: [:users => {except: [:created_at, :updated_at]}, :category => {except: [:created_at, :updated_at]}], status: 200
   end
 
   def create
@@ -29,7 +30,7 @@ class Api::V1::ProjectsController < ApplicationController
 
   def personal
     user = current_user
-    render json: user, include: [:projects => {include: :users}], only: [:id, :name, :email]
+    render json: user, include: [:projects => {include: [:users, :category]}], only: [:id, :name, :email]
   end
   
   private
