@@ -10,15 +10,15 @@
 
 # categories.each {|category| Category.create(name: category) }
 
-automotive = Category.create(name: 'automotive')
-charity = Category.create(name: 'charity')
-educational = Category.create(name: 'educational')
-makers_and_crafting = Category.create(name: 'makers_and_crafting')
-health_and_fitness = Category.create(name: 'health_and_fitness')
-food_and_drink = Category.create(name: 'food_and_drink')
-programming = Category.create(name: 'programming')
-social_media = Category.create(name: 'social_media')
-others = Category.create(name: 'others')
+automotive = Category.create(name: 'Automotive')
+charity = Category.create(name: 'Charity')
+educational = Category.create(name: 'Educational')
+makers_and_crafting = Category.create(name: 'Makers and Crafting')
+health_and_fitness = Category.create(name: 'Health and Fitness')
+food_and_drink = Category.create(name: 'Food and Drink')
+programming = Category.create(name: 'Programming')
+social_media = Category.create(name: 'Social Media')
+others = Category.create(name: 'Others')
 
 
 m = User.create(
