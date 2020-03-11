@@ -25,7 +25,7 @@ class Api::V1::ProjectsController < ApplicationController
 
   def show
     project = Project.find(params[:id])
-    render json: project
+    render json: project, include: [:users => {except: [:created_at, :updated_at]}, :category => {except: [:created_at, :updated_at]}], status: 200
   end
 
   def personal
