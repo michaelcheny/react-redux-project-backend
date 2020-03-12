@@ -11,7 +11,7 @@ class Api::V1::CommentsController < ApplicationController
     project = Project.find_by(id: params[:projectId])
     comment = Comment.create(comment_params)
     comment.update(user: user, commentable: project)
-    render json: comment
+    render json: comment, include: [:user => {only: [:name]}]
   end
 
   private
