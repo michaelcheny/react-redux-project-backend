@@ -4,10 +4,10 @@ class Api::V1::ProjectsController < ApplicationController
     if params[:user_id]
       projects = User.find(params[:user_id]).projects
     else
-      projects = Project.all
+      projects = Project.all.reverse
     end
     # render json: projects, include: [:users => {except: [:created_at, :updated_at]}, :category], status: 200
-    render json: projects, include: [:users => {except: [:created_at, :updated_at]}, :category => {except: [:created_at, :updated_at]}], status: 200
+    render json: projects, include: [:users => {except: [:created_at, :updated_at, :password_digest]}, :category => {except: [:created_at, :updated_at]}], status: 200
   end
 
   def create
@@ -25,7 +25,12 @@ class Api::V1::ProjectsController < ApplicationController
 
   def show
     project = Project.find(params[:id])
-    render json: project, include: [:users => {except: [:created_at, :updated_at]}, :category => {except: [:created_at, :updated_at]}], status: 200
+    render json: project, include: [
+      :users => {except: [:created_at, :updated_at, :password_digest]}, 
+      :category => {except: [:created_at, :updated_at]},
+      :comments => {except: [:updated_at]},
+      :reactions => {except: [:created_at, :updated_at]}
+    ], status: 200
   end
 
   def personal
