@@ -8,11 +8,11 @@ class Api::V1::ProjectsController < ApplicationController
     end
     # render json: projects, include: [:users => {except: [:created_at, :updated_at]}, :category], status: 200
     render json: projects, include: [
-      :users => {except: [:created_at, :updated_at, :password_digest]}, 
-      :category => {except: [:created_at, :updated_at]},
-      :comments => {except: [:updated_at]},
-      :reactions => {except: [:created_at, :updated_at]}
-    ], status: 200
+      :users => {except: [:created_at, :updated_at, :password_digest, :id]}, 
+      :category => {except: [:created_at, :updated_at, :id]},
+      :comments => {only: [:created_at, :content]},
+      :reactions => {only: [:reaction_type]}
+    ], except: [:category_id], status: 200
   end
 
   def create
@@ -33,9 +33,9 @@ class Api::V1::ProjectsController < ApplicationController
     render json: project, include: [
       :users => {except: [:created_at, :updated_at, :password_digest]}, 
       :category => {except: [:created_at, :updated_at]},
-      :comments => {except: [:updated_at]},
-      :reactions => {except: [:created_at, :updated_at]}
-    ], status: 200
+      :comments => {only: [:created_at, :content]},
+      :reactions => {only: [:reaction_type]}
+    ], except: [:category_id], status: 200
   end
 
   def personal
