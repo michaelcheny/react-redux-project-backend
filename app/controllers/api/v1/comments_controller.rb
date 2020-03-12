@@ -1,12 +1,15 @@
 class Api::V1::CommentsController < ApplicationController
 
+  def index
+    project = Project.find_by(id: params[:project_id])
+    comments = project.comments
+    render json: comments, only: [:content, :updated_at, :created_at]
+  end
 
   def create
     user = current_user
     project = Project.find_by(id: params[:projectId])
-    # comment = Comment.create(user_id: user.id, commentable: project, content: comment_params)
     comment = Comment.create(comment_params)
-    # binding.pry
     comment.update(user: user, commentable: project)
     render json: comment
   end

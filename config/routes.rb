@@ -18,9 +18,11 @@ Rails.application.routes.draw do
       resources :users
       resources :reactions
       resources :categories
-      resources :comments
       resources :user_projects
-      resources :projects
+      resources :projects do
+        
+        resources :comments
+      end
       
     end
   end
