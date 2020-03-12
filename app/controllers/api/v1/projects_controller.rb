@@ -33,7 +33,7 @@ class Api::V1::ProjectsController < ApplicationController
     render json: project, include: [
       :users => {except: [:created_at, :updated_at, :password_digest]}, 
       :category => {except: [:created_at, :updated_at]},
-      :comments => {only: [:created_at, :content]},
+      :comments => {only: [:created_at, :content], include: [:user => {only: [:name]}]},
       :reactions => {only: [:reaction_type]}
     ], except: [:category_id], status: 200
   end
