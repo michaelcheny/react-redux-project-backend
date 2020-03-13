@@ -12,7 +12,7 @@ class Api::V1::ProjectsController < ApplicationController
       :category => {except: [:created_at, :updated_at, :id]},
       :comments => {only: [:created_at, :content]},
       :reactions => {only: [:reaction_type]}
-    ], except: [:category_id], status: 200
+    ], status: 200
   end
 
   def create
@@ -40,7 +40,9 @@ class Api::V1::ProjectsController < ApplicationController
 
   def personal
     user = current_user
-    render json: user, include: [:projects => {include: [:users, :category]}], only: [:id, :name, :email]
+    render json: user, include: [
+      :projects => {include: [:users, :category, :comments, :reactions]}
+      ], only: [:id, :name, :email]
   end
   
   private
