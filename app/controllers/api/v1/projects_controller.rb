@@ -10,7 +10,7 @@ class Api::V1::ProjectsController < ApplicationController
     render json: projects, include: [
       :users => {except: [:created_at, :updated_at, :password_digest, :id]}, 
       :category => {except: [:created_at, :updated_at, :id]},
-      :comments => {only: [:created_at, :content]},
+      :comments => {only: [:created_at, :content, :user_id]},
       :reactions => {only: [:reaction_type, :user_id]}
     ], status: 200
   end
@@ -33,7 +33,7 @@ class Api::V1::ProjectsController < ApplicationController
     render json: project, include: [
       :users => {except: [:created_at, :updated_at, :password_digest]}, 
       :category => {except: [:created_at, :updated_at]},
-      :comments => {only: [:created_at, :content], include: [:user => {only: [:name]}]},
+      :comments => {only: [:created_at, :content, :user_id], include: [:user => {only: [:name]}]},
       :reactions => {only: [:reaction_type, :user_id, :id]}
     ], except: [:category_id], status: 200
   end
