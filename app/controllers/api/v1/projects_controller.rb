@@ -11,7 +11,7 @@ class Api::V1::ProjectsController < ApplicationController
       :users => {except: [:created_at, :updated_at, :password_digest, :id]}, 
       :category => {except: [:created_at, :updated_at, :id]},
       :comments => {only: [:created_at, :content]},
-      :reactions => {only: [:reaction_type]}
+      :reactions => {only: [:reaction_type, :user_id]}
     ], status: 200
   end
 
@@ -34,12 +34,13 @@ class Api::V1::ProjectsController < ApplicationController
       :users => {except: [:created_at, :updated_at, :password_digest]}, 
       :category => {except: [:created_at, :updated_at]},
       :comments => {only: [:created_at, :content], include: [:user => {only: [:name]}]},
-      :reactions => {only: [:reaction_type]}
+      :reactions => {only: [:reaction_type, :user_id, :id]}
     ], except: [:category_id], status: 200
   end
 
   def personal
     user = current_user
+    # binding.pry
     render json: user, include: [
       :projects => {include: [:users, :category, :comments, :reactions]}
       ], only: [:id, :name, :email]

@@ -14,6 +14,13 @@ class Api::V1::CommentsController < ApplicationController
     render json: comment, include: [:user => {only: [:name]}]
   end
 
+  def destroy
+    # binding.pry
+    comment = Comment.find_by(id: params[:id])
+    comment.destroy
+    render json: comment
+  end
+
   private
 
   def comment_params
