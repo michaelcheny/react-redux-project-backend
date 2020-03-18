@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_194425) do
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.boolean "online"
     t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -33,7 +33,7 @@ class Api::V1::ProjectsController < ApplicationController
     render json: project, include: [
       :users => {except: [:created_at, :updated_at, :password_digest]}, 
       :category => {except: [:created_at, :updated_at]},
-      :comments => {only: [:created_at, :content, :user_id], include: [:user => {only: [:name]}]},
+      :comments => {only: [:created_at, :content, :user_id, :id], include: [:user => {only: [:name]}]},
       :reactions => {only: [:reaction_type, :user_id, :id]}
     ], except: [:category_id], status: 200
   end
@@ -49,7 +49,7 @@ class Api::V1::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description)
+    params.require(:project).permit(:name, :description, :online)
   end
   
 end

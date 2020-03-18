@@ -38,7 +38,8 @@ d = User.create(
 
 p = Project.create(
   name: "Money Management App",
-  description: "An app to manage your money. Track spending, income, etc. YEEEEET!"
+  description: "An app to manage your money. Track spending, income, etc. YEEEEET!",
+  online: true
 )
 
 programming.projects << p
