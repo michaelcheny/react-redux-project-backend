@@ -45,7 +45,7 @@ p = Project.create(
   name: "Money Management App",
   description: "An app to manage your money. Track spending, income, etc. YEEEEET!",
   online: true,
-  team_size: 5
+  team_size: '5'
 )
 
 programming.projects << p
