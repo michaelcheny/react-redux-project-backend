@@ -4,6 +4,7 @@ class CreateProjects < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :description
       t.boolean :online
+      t.integer :team_size
       t.belongs_to :category
 
       t.timestamps

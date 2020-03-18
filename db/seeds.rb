@@ -10,13 +10,18 @@
 
 # categories.each {|category| Category.create(name: category) }
 
+advertisement = Category.create(name: 'Advertisement')
 automotive = Category.create(name: 'Automotive')
 charity = Category.create(name: 'Charity')
 educational = Category.create(name: 'Educational')
+farming = Category.create(name: 'Farming and Gardening')
 fashion = Category.create(name: 'Fashion')
 food_and_drink = Category.create(name: 'Food and Drink')
+gaming = Category.create(name: 'Gaming')
 health_and_fitness = Category.create(name: 'Health and Fitness')
+home_improvement = Category.create(name: 'Home Improvement')
 makers_and_crafting = Category.create(name: 'Makers and Crafting')
+politics = Category.create(name: 'Politics')
 programming = Category.create(name: 'Programming')
 social_media = Category.create(name: 'Social Media')
 others = Category.create(name: 'Others')
@@ -39,7 +44,8 @@ d = User.create(
 p = Project.create(
   name: "Money Management App",
   description: "An app to manage your money. Track spending, income, etc. YEEEEET!",
-  online: true
+  online: true,
+  team_size: 5
 )
 
 programming.projects << p

@@ -49,7 +49,7 @@ class Api::V1::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :online)
+    params.require(:project).permit(:name, :description, :online, :team_size)
   end
   
 end
