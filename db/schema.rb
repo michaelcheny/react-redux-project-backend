@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_194425) do
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.integer "owner_id"
     t.boolean "online"
     t.integer "team_size"
     t.bigint "category_id"
