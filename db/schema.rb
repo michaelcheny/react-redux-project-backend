@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_194425) do
     t.string "name"
     t.string "description"
     t.boolean "online"
-    t.string "team_size"
+    t.integer "team_size"
     t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
