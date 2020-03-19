@@ -31,7 +31,10 @@ m = User.create(
   name: "michael", 
   email: "michael@michael.com", 
   password: "password", 
-  password_confirmation: "password"
+  password_confirmation: "password",
+  city: "San Francisco",
+  state: "CA",
+  country: "US"
   )
 
 d = User.create(
@@ -39,6 +42,9 @@ d = User.create(
   email: "dog@dog.com", 
   password: "password", 
   password_confirmation: "password",
+  city: "San Francisco",
+  state: "CA",
+  country: "US"
   )  
 
 p = Project.create(

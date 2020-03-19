@@ -67,8 +67,9 @@ ActiveRecord::Schema.define(version: 2020_03_06_194425) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.string "google_token"
-    t.string "google_refresh_token"
+    t.string "city"
+    t.string "state"
+    t.string "country"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

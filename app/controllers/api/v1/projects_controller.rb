@@ -8,7 +8,7 @@ class Api::V1::ProjectsController < ApplicationController
     end
     # render json: projects, include: [:users => {except: [:created_at, :updated_at]}, :category], status: 200
     render json: projects, include: [
-      :users => {except: [:created_at, :updated_at, :password_digest, :id]}, 
+      :users => {except: [:created_at, :updated_at, :password_digest]}, 
       :category => {except: [:created_at, :updated_at, :id]},
       :comments => {only: [:created_at, :content, :user_id]},
       :reactions => {only: [:reaction_type, :user_id]}
