@@ -22,7 +22,6 @@ Rails.application.routes.draw do
 
       resources :user_projects
       resources :projects do
-        
         resources :comments
       end
       
