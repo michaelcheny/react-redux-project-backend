@@ -26,7 +26,7 @@ class Api::V1::ProjectsController < ApplicationController
       render json: project, include: [:users], status: 200
       # render json: user, status: 200
     else
-      render json: { message: "There was an error creating this project" }, status: 400
+      render json: { errors: project.errors.full_messages }, status: 400
     end
   end
 
@@ -38,6 +38,11 @@ class Api::V1::ProjectsController < ApplicationController
       :comments => {only: [:created_at, :content, :user_id, :id, :updated_at], include: [:user => {only: [:name]}]},
       :reactions => {only: [:reaction_type, :user_id, :id]}
     ], except: [:category_id], status: 200
+  end
+
+  def update
+    user = current_user
+    
   end
 
   def personal

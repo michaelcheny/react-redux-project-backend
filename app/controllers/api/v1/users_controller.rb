@@ -2,7 +2,7 @@
 
 class Api::V1::UsersController < ApplicationController
 
-  before_action :find_user, only: [:show, :update]
+  before_action :find_user, only: [:show]
 
   def index
     users = User.all
@@ -33,6 +33,7 @@ class Api::V1::UsersController < ApplicationController
 
   def update
     # user = User.find(params[:id])
+    user = current_user
     if user.update(user_params)
       render json: user, except: [:password_digest]
     else
