@@ -7,10 +7,9 @@ class Api::V1::SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       log_in(user)
       cookies['logged_in'] = true
-      # binding.pry
       render json: user, status: 200
     else
-      render json: { error: 'Invalid Authentication' }, status: 401
+      render json: { error: 'error' }, status: 401
     end
   end
 
@@ -20,11 +19,8 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   def logout
-    # authenticate
     session.clear
     cookies['logged_in'] = logged_in?
-
-    # binding.pry
     render json: { message: "Logged out" }, status: 200
   end
 
