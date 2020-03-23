@@ -37,7 +37,7 @@ class Api::V1::UsersController < ApplicationController
     if user.update(user_params)
       render json: user, except: [:password_digest]
     else
-      render json: user.errors, status: 401
+      render json: { errors: user.errors.full_messages }, status: 401
     end
   end
   

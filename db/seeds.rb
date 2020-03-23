@@ -67,15 +67,15 @@ r = User.create(
   country: "Earth"
   )   
 
-# morty = User.create(
-#   name: "Morty Smith", 
-#   email: "morty@smith.com", 
-#   password: "password", 
-#   password_confirmation: "password",
-#   city: "C-137",
-#   state: "Earth",
-#   country: "Earth"
-#   )
+morty = User.create(
+  name: "Morty Smith", 
+  email: "morty@smith.com", 
+  password: "password", 
+  password_confirmation: "password",
+  city: "C-137",
+  state: "Earth",
+  country: "Earth"
+  ) 
 
 kid = User.create(
   name: "Charlie Brown", 
@@ -115,11 +115,22 @@ p4 = Project.create(
   description: "Calling for all people in the state of Indiana to come together the night before Thanksgiving to have a massive snowball fight. The rules are 1. Only throwing snow 2. Follow rule #1. Join now so we can pick teams and location.",
   online: false,
   team_size: 10,
+  owner_id: 6
+)
+
+p5 = Project.create(
+  name: "Love Finderzz App",
+  description: "Hey wanna build an app? I have this genius plan to build this speed dating app. Users will magically fall in love with their dates then get new dates and fall in love with them. This will make us rich! We can brainwash them! Muhahahaa.",
+  online: true,
+  team_size: 3,
   owner_id: 5
 )
 
-programming.projects << p1
 
+
+
+programming.projects << p1
+programming.projects << p5
 health_and_fitness.projects << p2
 others.projects << p3
 others.projects << p4
@@ -128,7 +139,7 @@ m.user_projects.create(project: p1)
 d.user_projects.create(project: p1)
 peter.user_projects.create(project: p2)
 r.user_projects.create(project: p3)
-# morty.user_projects.create(project: p3)
 kid.user_projects.create(project: p4)
+morty.user_projects.create(project: p5)
 
 

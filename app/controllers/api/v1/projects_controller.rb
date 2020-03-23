@@ -42,6 +42,17 @@ class Api::V1::ProjectsController < ApplicationController
 
   def update
     user = current_user
+    project = Project.find_by(id: params[:id])
+    if project.update(project_params)
+      render json: project, include: [
+        :users => {except: [:created_at, :updated_at, :password_digest]}, 
+        :category => {except: [:created_at, :updated_at, :id]},
+        :comments => {only: [:created_at, :content, :user_id]},
+        :reactions => {only: [:reaction_type, :user_id]}
+      ], status: 200
+    else
+      render json: { errors: project.errors.full_messages}
+    end
     
   end
 
