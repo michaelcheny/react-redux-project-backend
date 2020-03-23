@@ -52,6 +52,11 @@ class Api::V1::ProjectsController < ApplicationController
       :projects => {include: [:users, :category, :comments, :reactions]}
       ], only: [:id, :name, :email]
   end
+
+  def newest_projects
+    projects = Project.newest_projects
+    render json: projects
+  end
   
   private
 

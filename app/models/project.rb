@@ -7,4 +7,10 @@ class Project < ApplicationRecord
 
   validates :name, length: { minimum: 2 }
   validates :description, length: { minimum: 8 }
+
+  def self.newest_projects
+    order(created_at: :desc).limit(3)
+  end
+
+
 end

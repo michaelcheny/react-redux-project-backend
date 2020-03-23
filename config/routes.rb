@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get '/auth/failure', to: redirect('/')
       
       get '/personal-projects' => 'projects#personal'
+      get '/newest-projects' => 'projects#newest_projects'
       resources :users
       resources :reactions
       resources :categories

@@ -28,7 +28,7 @@ others = Category.create(name: 'Others')
 
 
 m = User.create(
-  name: "michael", 
+  name: "Michael", 
   email: "michael@michael.com", 
   password: "password", 
   password_confirmation: "password",
@@ -38,7 +38,7 @@ m = User.create(
   )
 
 d = User.create(
-  name: "dog", 
+  name: "Dog", 
   email: "dog@dog.com", 
   password: "password", 
   password_confirmation: "password",
@@ -47,18 +47,88 @@ d = User.create(
   country: "US"
   )  
 
-p = Project.create(
+peter = User.create(
+  name: "Peter Griffin", 
+  email: "peter@family.com", 
+  password: "password", 
+  password_confirmation: "password",
+  city: "Quahog",
+  state: "Rhode Island",
+  country: "US"
+  ) 
+
+r = User.create(
+  name: "Rick Sanchez", 
+  email: "rick@sanchez.com", 
+  password: "password", 
+  password_confirmation: "password",
+  city: "C-137",
+  state: "Earth",
+  country: "Earth"
+  )   
+
+# morty = User.create(
+#   name: "Morty Smith", 
+#   email: "morty@smith.com", 
+#   password: "password", 
+#   password_confirmation: "password",
+#   city: "C-137",
+#   state: "Earth",
+#   country: "Earth"
+#   )
+
+kid = User.create(
+  name: "Charlie Brown", 
+  email: "charlie@brown.com", 
+  password: "password", 
+  password_confirmation: "password",
+  city: "Minneapolis",
+  state: "IN",
+  country: "US"
+  )  
+  
+p1 = Project.create(
   name: "Money Management App",
-  description: "An app to manage your money. Track spending, income, etc. YEEEEET!",
+  description: "Hi, I am looking for people to help me on creating a money management app. This app will be aimed towards people who want to simplify their lives by managing money without thinking too much about it. The goal is to push this app out on web and mobile at the same time, preferably using React Native. Join and we can set up meet up zoom meet up times.",
   online: true,
   team_size: 5,
   owner_id: 1
 )
+p2 = Project.create(
+  name: "Weekly Group Fitness Classes",
+  description: "I am hosting a weekly group fitness class every Sunday afternoon. Each class will have a different workout to get the most out of it. There is no minimum fitness level required, everyone of all shapes and sizes can join and get fit together. Bring a bottle of water, comfortable shoes and some socks to change out of! Keep checking the comments to find out where we meet.",
+  online: false,
+  team_size: 10,
+  owner_id: 3
+)
 
-programming.projects << p
+p3 = Project.create(
+  name: "Bank Heist",
+  description: "I NEED TO ASSEMBLE THE CREW. I NEED ONE 3-EYED ALIEN PIANIST, ONE VAMPIRE MONSTER TRUCK DRIVER, AND ONE MULTI-HANDED COW GIRL. THERE IS THIS HEIST-CON EVENT HAPPENING AND WE NEED A CREW TO PARTICIPATE. THE REWARD IS THE CRYSTAL SKULL OF HORWITZ, WE GO IN, GRAB IT, AND PROFIT!!!!!! P.S. THIS MISSION IS DANGEROUS AND YOU MAY DIE. THIS MISSION IS NOT FOR THE WEAK!!!",
+  online: false,
+  team_size: 4,
+  owner_id: 4
+)
 
-m.user_projects.create(project: p)
-d.user_projects.create(project: p)
+p4 = Project.create(
+  name: "Massive Snowball Fight",
+  description: "Calling for all people in the state of Indiana to come together the night before Thanksgiving to have a massive snowball fight. The rules are 1. Only throwing snow 2. Follow rule #1. Join now so we can pick teams and location.",
+  online: false,
+  team_size: 10,
+  owner_id: 5
+)
 
+programming.projects << p1
+
+health_and_fitness.projects << p2
+others.projects << p3
+others.projects << p4
+
+m.user_projects.create(project: p1)
+d.user_projects.create(project: p1)
+peter.user_projects.create(project: p2)
+r.user_projects.create(project: p3)
+# morty.user_projects.create(project: p3)
+kid.user_projects.create(project: p4)
 
 
