@@ -35,7 +35,7 @@ class Api::V1::ProjectsController < ApplicationController
     render json: project, include: [
       :users => {except: [:created_at, :updated_at, :password_digest]}, 
       :category => {except: [:created_at, :updated_at]},
-      :comments => {only: [:created_at, :content, :user_id, :id, :updated_at], include: [:user => {only: [:name]}]},
+      :comments => {only: [:created_at, :content, :user_id, :id, :updated_at], include: [:user => {only: [:name, :image]}]},
       :reactions => {only: [:reaction_type, :user_id, :id]}
     ], except: [:category_id], status: 200
   end

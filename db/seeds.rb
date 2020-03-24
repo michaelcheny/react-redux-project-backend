@@ -35,7 +35,7 @@ m = User.create(
   city: "San Francisco",
   state: "CA",
   country: "US",
-  image: "https://imgur.com/a/7g4wkia"
+  image: "https://i.imgur.com/tIaR3id.jpg"
   )
 
 d = User.create(
@@ -46,7 +46,7 @@ d = User.create(
   city: "San Francisco",
   state: "CA",
   country: "US",
-  image: "https://imgur.com/a/CUrKNzL"
+  image: "https://i.imgur.com/xauS481.jpg"
   )  
 
 peter = User.create(
