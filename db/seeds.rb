@@ -34,7 +34,8 @@ m = User.create(
   password_confirmation: "password",
   city: "San Francisco",
   state: "CA",
-  country: "US"
+  country: "US",
+  image: "https://imgur.com/a/7g4wkia"
   )
 
 d = User.create(
@@ -44,7 +45,8 @@ d = User.create(
   password_confirmation: "password",
   city: "San Francisco",
   state: "CA",
-  country: "US"
+  country: "US",
+  image: "https://imgur.com/a/CUrKNzL"
   )  
 
 peter = User.create(
@@ -54,7 +56,8 @@ peter = User.create(
   password_confirmation: "password",
   city: "Quahog",
   state: "Rhode Island",
-  country: "US"
+  country: "US",
+  image: "https://findicons.com/files/icons/208/peter_griffin/128/peter_griffin_football_head.png"
   ) 
 
 r = User.create(
@@ -64,7 +67,8 @@ r = User.create(
   password_confirmation: "password",
   city: "C-137",
   state: "Earth",
-  country: "Earth"
+  country: "Earth",
+  image: "http://img2.wikia.nocookie.net/__cb20131230003659/rickandmorty/images/thumb/d/dd/Rick.png/102px-Rick.png"
   )   
 
 morty = User.create(
@@ -74,7 +78,8 @@ morty = User.create(
   password_confirmation: "password",
   city: "C-137",
   state: "Earth",
-  country: "Earth"
+  country: "Earth",
+  image: "https://www.freepngimg.com/thumb/cartoon/72099-mortys-sanchez-morty-and-smith-pocket-facebook.png"
   ) 
 
 kid = User.create(
@@ -84,7 +89,8 @@ kid = User.create(
   password_confirmation: "password",
   city: "Minneapolis",
   state: "IN",
-  country: "US"
+  country: "US",
+  image: "https://upload.wikimedia.org/wikipedia/en/2/22/Charlie_Brown.png"
   )  
   
 p1 = Project.create(

@@ -6,6 +6,7 @@ class CreateProjects < ActiveRecord::Migration[6.0]
       t.integer :owner_id
       t.boolean :online
       t.integer :team_size
+      t.boolean :completed, default: false
       t.belongs_to :category
 
       t.timestamps
