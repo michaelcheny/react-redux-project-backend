@@ -24,6 +24,15 @@ class Api::V1::SessionsController < ApplicationController
     render json: { message: "Logged out" }, status: 200
   end
 
+  def auto_login
+    # binding.pry
+    if logged_in?
+      user = current_user
+      render json: user, status: 200
+    else
+      render json: { error: 'Not logged in' }
+    end
+  end
 
   private
 

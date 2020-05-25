@@ -31,6 +31,7 @@ class Api::V1::ProjectsController < ApplicationController
   end
 
   def show
+    # binding.pry
     project = Project.find(params[:id])
     render json: project, include: [
       :users => {except: [:created_at, :updated_at, :password_digest]}, 

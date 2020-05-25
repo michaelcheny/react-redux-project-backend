@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       
       get '/auth-check' => 'sessions#auth_check'
+      get '/auto_login' => 'sessions#auto_login'
       get '/signup' => 'users#new', as: 'signup'
       post '/signup' => 'users#create'
       get '/login' => 'sessions#login'
