@@ -9,7 +9,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :city
       t.string :state
       t.string :country
-      t.string :image, default: "https://tr.rbxcdn.com/0e69c8de1ccffe9be5adc02eb423e793/420/420/Decal/Png"
+      t.string :image, default: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png"
 
       # t.string :google_token
       # t.string :google_refresh_token
