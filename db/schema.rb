@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_194425) do
     t.string "city"
     t.string "state"
     t.string "country"
-    t.string "image", default: "https://tr.rbxcdn.com/0e69c8de1ccffe9be5adc02eb423e793/420/420/Decal/Png"
+    t.string "image", default: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
